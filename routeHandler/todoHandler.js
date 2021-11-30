@@ -21,6 +21,13 @@ router.get("/:id", async (req, res) => {
   });
 });
 
+// GET ALL TODOS
+router.get("/avtive", async (req, res) => {
+  const todo = new Todo();
+  const data = await todo.findActive();
+  res.status(200).json({ data });
+});
+
 // GET ALL TODOS BY ID
 router.get("/", async (req, res) => {
   await Todo.find({ status: "inactive" })
